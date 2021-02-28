@@ -1,6 +1,7 @@
 var questionNum = 0;
 var answerNum = 0;
 var score = 0;
+var secondsLeft = 100;
 var time = document.querySelector("#time");
 var question = document.querySelector("#question");
 var answers = document.querySelector("#answers");
@@ -18,9 +19,25 @@ var answerlist = ["1","2","3","4","1",
 function begin(event){
     event.preventDefault();
     document.getElementById("start").style.visibility = 'hidden';
+    setTime()
     currentquestion();
     list();
 }
+
+function setTime() {
+    var timerInterval = setInterval(function() {
+    
+      secondsLeft--;
+      time.textContent = secondsLeft + " seconds left";
+        
+        if(secondsLeft == 0 || secondsLeft < 0) {
+            clearInterval(timerInterval);
+            endquiz();
+        } else if (question.textContent === "All Done"){
+            clearInterval(timerInterval);
+        }
+    }, 1000);
+  }
 
 function currentquestion() {
     question.textContent = questionlist[questionNum];
@@ -49,39 +66,45 @@ function list() {
 
 function getscoreOpt1(){
     if (option1.textContent === answerlist[answerNum+4]) {
-        score = score + 10;
+        score = score + 100/questionlist.length;
     } else {
         score = score + 0;
+        secondsLeft -= 10;
     }
 }
 
 function getscoreOpt2(){
     if (option2.textContent === answerlist[answerNum+4]) {
-        score = score + 10;
+        score = score + 100/questionlist.length;
     } else {
         score = score + 0;
+        secondsLeft -= 10;
     }
 }
 
 function getscoreOpt3(){
     if (option3.textContent === answerlist[answerNum+4]) {
-        score = score + 10;
+        score = score + 100/questionlist.length;
     } else {
         score = score + 0;
+        secondsLeft -= 10;
     }
 }
 
 function getscoreOpt4(){
     if (option4.textContent === answerlist[answerNum+4]) {
-        score = score + 10;
+        score = score + 100/questionlist.length;
     } else {
         score = score + 0;
+        secondsLeft -= 10;
     }
 }
 
 function endquiz() {
-    question.textContent = "End";
+    // clearInterval(setTime.clearInterval)
+    question.textContent = "All Done";
     answers.textContent = "End";
+    console.log(score)
 }
 
 // 
@@ -89,9 +112,7 @@ startEl.addEventListener('click',begin);
 
 option1.addEventListener('click',function(){
     getscoreOpt1()
-            console.log(score)
-            console.log(questionNum)
-    if (questionNum < (answerlist.length/5-1)){
+    if (questionNum < (questionlist.length-1)){
             questionNum++;
             answerNum += 5;
             currentquestion();
@@ -103,9 +124,7 @@ option1.addEventListener('click',function(){
 );
 option2.addEventListener('click',function(){
     getscoreOpt2()
-            console.log(score)
-            console.log(questionNum)
-    if (questionNum < (answerlist.length/5-1)){
+    if (questionNum < (questionlist.length-1)){
             questionNum++;
             answerNum += 5;
             currentquestion();
@@ -117,9 +136,7 @@ option2.addEventListener('click',function(){
 );
 option3.addEventListener('click',function(){
     getscoreOpt3()
-            console.log(score)
-            console.log(questionNum)
-    if (questionNum < (answerlist.length/5-1)){
+    if (questionNum < (questionlist.length-1)){
             questionNum++;
             answerNum += 5;
             currentquestion();
@@ -131,9 +148,7 @@ option3.addEventListener('click',function(){
 );
 option4.addEventListener('click',function(){
     getscoreOpt4()
-            console.log(score)
-            console.log(questionNum)
-    if (questionNum < (answerlist.length/5-1)){
+    if (questionNum < (questionlist.length-1)){
             questionNum++;
             answerNum += 5;
             currentquestion();
