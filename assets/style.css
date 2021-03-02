@@ -1,0 +1,51 @@
+.mainbody {
+    text-align: center;
+}
+
+.forstart{
+    text-align: center;
+}
+
+.score-time{
+    display:inline-flex;
+}
+
+.score-time #time{
+    position: absolute;
+    right: -20px;
+    width: 100px;
+}
+
+h3{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 150%;
+}
+
+.mainbody h4 button {
+    background-color: #4CAF50;
+    border: 1px solid green; 
+    color: white; 
+    padding: 5px 24px; 
+    cursor: pointer; 
+    width: 75%; 
+    right: -20px;
+}
+
+
+.mainbody h4 button:hover {
+    background-color: #3e8e41;
+}
+
+.forstart button {
+    background-color: #4CAF50;
+    border: 1px solid green; 
+    color: white; 
+    padding: 5px 24px; 
+    cursor: pointer; 
+    width: 75%; 
+    right: -20px;
+}
+
+.forstart button  {
+    background-color: #3e8e41;
+}

@@ -18,10 +18,15 @@ var clear = document.createElement("button");
 var brl = document.createElement("br");
 var div = document.createElement("div")
 
-var questionlist = ["question 1","question 2","question 3"]
-var answerlist = ["1","2","3","4","1",
-                    "5","6","7","8","5",
-                        "9","10","11","12","9"]
+// Add question in the question list
+var questionlist = ["Inside which HTML element do we put the JavaScript?",
+                    "How do you create a function?",
+                    "How do you call a function named 'myFunction'?"]
+
+// Add answers in the answer list, every 4 choice + 1 correct answer 
+var answerlist = ["<script>","<javascript>","<js>","<scripting>","<script>",
+                    "function:myFunction()","function=myFunction()","function myFunction()","myFunction():function","function myFunction()",
+                        "call myFunction()","myFunction()","call function myFunction","Call.myFunction()","myFunction()"]
 
 function begin(event){
     event.preventDefault();
@@ -31,11 +36,12 @@ function begin(event){
     list();
 }
 
+// set time
 function setTime() {
     var timerInterval = setInterval(function() {
     
       secondsLeft--;
-      time.textContent = secondsLeft + " seconds left";
+      time.textContent = secondsLeft + " s";
         
         if(secondsLeft == 0 || secondsLeft < 0) {
             clearInterval(timerInterval);
@@ -52,10 +58,12 @@ function currentquestion() {
     question.textContent = questionlist[questionNum];
 }
 
+// shuffle answers everytime restart the quiz
 function getrandom(array) {
     array.sort (function(a, b) {return Math.random() - 0.5})
 }
-    
+
+// put answers in each option box
 function list() {
     var numarray = [0,1,2,3];
     getrandom(numarray);
@@ -81,9 +89,11 @@ function submitbtn() {
     input.id = "initial";
     answers.appendChild(brl);
     answers.appendChild(input);
+    answers.appendChild(brl);
     answers.appendChild(submit);
 }
 
+// record the score from highest to lowest
 function scoreboard() {
     question.textContent = "Highest Score";
     answers.textContent = '';
@@ -136,7 +146,7 @@ function getscoreOpt1(){
         score = score + 100/questionlist.length;
     } else {
         score = score + 0;
-        secondsLeft -= 10;
+        secondsLeft -= 20;
     }
 }
 
@@ -145,7 +155,7 @@ function getscoreOpt2(){
         score = score + 100/questionlist.length;
     } else {
         score = score + 0;
-        secondsLeft -= 10;
+        secondsLeft -= 20;
     }
 }
 
@@ -154,7 +164,7 @@ function getscoreOpt3(){
         score = score + 100/questionlist.length;
     } else {
         score = score + 0;
-        secondsLeft -= 10;
+        secondsLeft -= 20;
     }
 }
 
@@ -163,7 +173,7 @@ function getscoreOpt4(){
         score = score + 100/questionlist.length;
     } else {
         score = score + 0;
-        secondsLeft -= 10;
+        secondsLeft -= 20;
     }
 }
 
